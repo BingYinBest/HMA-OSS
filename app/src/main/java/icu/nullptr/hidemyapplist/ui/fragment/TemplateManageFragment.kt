@@ -16,10 +16,10 @@ import icu.nullptr.hidemyapplist.ui.adapter.TemplateAdapter
 import icu.nullptr.hidemyapplist.ui.util.navController
 import icu.nullptr.hidemyapplist.ui.util.navigate
 import icu.nullptr.hidemyapplist.ui.util.setupToolbar
-import org.frknkrc44.hma_oss.R
-import org.frknkrc44.hma_oss.databinding.FragmentTemplateManageBinding
-import org.frknkrc44.hma_oss.ui.fragment.SettingsTemplateConfFragmentArgs
-import org.frknkrc44.hma_oss.ui.util.toTargetSettingList
+import com.miui.video.R
+import com.miui.video.FragmentTemplateManageBinding
+import com.miui.video.ui.fragment.SettingsTemplateConfFragmentArgs
+import com.miui.video.ui.util.toTargetSettingList
 
 class TemplateManageFragment : Fragment(R.layout.fragment_template_manage) {
 
