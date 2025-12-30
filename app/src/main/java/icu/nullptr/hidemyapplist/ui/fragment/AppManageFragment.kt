@@ -4,7 +4,7 @@ import icu.nullptr.hidemyapplist.service.ConfigManager
 import icu.nullptr.hidemyapplist.ui.adapter.AppManageAdapter
 import icu.nullptr.hidemyapplist.ui.util.navigate
 import icu.nullptr.hidemyapplist.util.PackageHelper
-import org.frknkrc44.hma_oss.R
+import com.miui.video.R
 
 class AppManageFragment : AppSelectFragment() {
 
