@@ -3,9 +3,9 @@ package org.frknkrc44.hma_oss.ui.activity
 import android.os.Bundle
 import androidx.navigation.findNavController
 import icu.nullptr.hidemyapplist.service.ServiceClient
-import org.frknkrc44.hma_oss.BuildConfig
-import org.frknkrc44.hma_oss.R
-import org.frknkrc44.hma_oss.databinding.ActivityMainBinding
+import com.miui.video.BuildConfig
+import com.miui.video.R
+import com.miui.video.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity() {
     var readyToKill: Boolean = true
