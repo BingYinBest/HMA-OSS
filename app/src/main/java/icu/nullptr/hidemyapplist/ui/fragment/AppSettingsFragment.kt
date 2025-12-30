@@ -33,10 +33,10 @@ import icu.nullptr.hidemyapplist.ui.util.setupToolbar
 import icu.nullptr.hidemyapplist.ui.util.showToast
 import icu.nullptr.hidemyapplist.ui.viewmodel.AppSettingsViewModel
 import icu.nullptr.hidemyapplist.util.PackageHelper
-import org.frknkrc44.hma_oss.BuildConfig
-import org.frknkrc44.hma_oss.R
-import org.frknkrc44.hma_oss.databinding.FragmentSettingsBinding
-import org.frknkrc44.hma_oss.databinding.LayoutListEmptyBinding
+import com.miui.video.BuildConfig
+import com.miui.video.R
+import com.miui.video.databinding.FragmentSettingsBinding
+import com.miui.video.databinding.LayoutListEmptyBinding
 
 class AppSettingsFragment : Fragment(R.layout.fragment_settings) {
     companion object {
