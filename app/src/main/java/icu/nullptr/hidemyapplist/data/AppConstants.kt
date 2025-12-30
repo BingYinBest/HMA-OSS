@@ -1,6 +1,6 @@
 package icu.nullptr.hidemyapplist.data
 
-import org.frknkrc44.hma_oss.BuildConfig
+import com.miui.video.BuildConfig
 
 object AppConstants {
     const val COMPONENT_NAME_DEFAULT = "${BuildConfig.APPLICATION_ID}.MainActivityLauncher"
