@@ -81,7 +81,7 @@ val serviceVerCode by extra(100)
 val minBackupVerCode by extra(65)
 
 @Suppress("unused")
-val appPackageName by extra("org.frknkrc44.hma_oss")
+val appPackageName by extra("com.miui.video")
 
 @Suppress("unused")
 val localBuild by extra(localProperties.getProperty("localBuild", "false") == "true")
