@@ -36,11 +36,11 @@ import icu.nullptr.hidemyapplist.util.PackageHelper.findEnabledAppComponent
 import icu.nullptr.hidemyapplist.util.SuUtils
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import org.frknkrc44.hma_oss.R
-import org.frknkrc44.hma_oss.databinding.FragmentSettingsBinding
-import org.frknkrc44.hma_oss.ui.activity.BaseActivity
-import org.frknkrc44.hma_oss.ui.activity.MainActivity
-import org.frknkrc44.hma_oss.ui.preference.AppIconPreference
+import com.miui.video.R
+import com.miui.video.databinding.FragmentSettingsBinding
+import com.miui.video.ui.activity.BaseActivity
+import com.miui.video.ui.activity.MainActivity
+import com.miui.video.ui.preference.AppIconPreference
 import java.util.Locale
 
 class SettingsFragment : Fragment(R.layout.fragment_settings), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
