@@ -8,7 +8,7 @@ import icu.nullptr.hidemyapplist.ui.view.AppItemView
 import icu.nullptr.hidemyapplist.util.PackageHelper
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import org.frknkrc44.hma_oss.BuildConfig
+import com.miui.video.BuildConfig
 
 abstract class AppSelectAdapter(
     private val firstFilter: ((String) -> Boolean)? = null
