@@ -20,8 +20,8 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import org.frknkrc44.hma_oss.BuildConfig
-import org.frknkrc44.hma_oss.R
+import com.miui.video.BuildConfig
+import com.miui.video.R
 import java.text.Collator
 import java.util.Locale
 
