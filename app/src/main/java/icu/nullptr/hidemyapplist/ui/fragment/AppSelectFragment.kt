@@ -22,9 +22,9 @@ import icu.nullptr.hidemyapplist.ui.util.navController
 import icu.nullptr.hidemyapplist.ui.util.setupToolbar
 import icu.nullptr.hidemyapplist.util.PackageHelper
 import kotlinx.coroutines.launch
-import org.frknkrc44.hma_oss.R
-import org.frknkrc44.hma_oss.databinding.FragmentAppSelectBinding
-import org.frknkrc44.hma_oss.ui.fragment.AppPresetFragment
+import com.miui.video.R
+import com.miui.video.databinding.FragmentAppSelectBinding
+import com.miui.video.ui.fragment.AppPresetFragment
 
 abstract class AppSelectFragment : Fragment(R.layout.fragment_app_select) {
 
