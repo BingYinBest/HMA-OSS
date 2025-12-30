@@ -4,7 +4,7 @@ import android.content.ComponentName
 import android.content.pm.ActivityInfo
 import android.content.res.Resources
 import kotlinx.coroutines.flow.MutableSharedFlow
-import org.frknkrc44.hma_oss.R
+import com.miui.video.R
 
 fun Boolean.enabledString(resources: Resources, lower: Boolean = false): String {
     val returnedStr = if (this) resources.getString(R.string.enabled)
