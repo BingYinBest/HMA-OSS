@@ -21,8 +21,8 @@ import icu.nullptr.hidemyapplist.ui.util.navigate
 import icu.nullptr.hidemyapplist.ui.util.setupToolbar
 import icu.nullptr.hidemyapplist.ui.viewmodel.TemplateSettingsViewModel
 import kotlinx.coroutines.launch
-import org.frknkrc44.hma_oss.R
-import org.frknkrc44.hma_oss.databinding.FragmentTemplateSettingsBinding
+import com.miui.video.R
+import com.miui.video.databinding.FragmentTemplateSettingsBinding
 
 class TemplateSettingsFragment : Fragment(R.layout.fragment_template_settings) {
 
