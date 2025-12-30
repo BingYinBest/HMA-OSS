@@ -31,7 +31,7 @@ import icu.nullptr.hidemyapplist.xposed.hook.PmsHookTarget33
 import icu.nullptr.hidemyapplist.xposed.hook.PmsHookTarget34
 import icu.nullptr.hidemyapplist.xposed.hook.PmsPackageEventsHook
 import icu.nullptr.hidemyapplist.xposed.hook.ZygoteHook
-import org.frknkrc44.hma_oss.common.BuildConfig
+import com.miui.video.common.BuildConfig
 import rikka.hidden.compat.ActivityManagerApis
 import java.io.File
 import java.util.concurrent.ExecutorService
