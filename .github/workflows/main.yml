@@ -10,7 +10,6 @@ on:
       - 'fastlane/**'
       - '**.md'
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -49,8 +48,6 @@ jobs:
           echo keyAlias='${{ secrets.ALIAS }}' >> local.properties
           echo keyPassword='${{ secrets.ALIAS_KEY_PASSWORD }}' >> local.properties
           echo fileDir=`pwd`/key.jks >> local.properties
-          echo crowdinProjectId='${{ secrets.CROWDIN_PROJECT_ID }}' >> local.properties
-          echo crowdinApiKey='${{ secrets.CROWDIN_LIST_MEMBERS_API_TOKEN }}' >> local.properties
           echo "${{ secrets.KEY_STORE }}" | base64 --decode > key.jks
 
       - name: Cache gradle
@@ -106,16 +103,3 @@ jobs:
             ${{ steps.buildAll.outputs.releaseFile }}
             ${{ steps.buildAll.outputs.debugFile }}
           tag_name: oss-${{ steps.buildAll.outputs.ossNum }}
-
-      - name: Post to channel
-        if: ${{ github.event_name != 'pull_request' && success() && github.ref == 'refs/heads/master' }}
-        env:
-          CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL }}
-          BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
-          COMMIT_URL: ${{ github.event.head_commit.url }}
-          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-        run: |
-          export release=${{ steps.buildAll.outputs.releaseFile }}
-          export debug=${{ steps.buildAll.outputs.debugFile }}
-          ESCAPED=`python3 -c 'import json,os,urllib.parse; msg = json.dumps(os.environ["COMMIT_MESSAGE"]); print(urllib.parse.quote(msg if len(msg) <= 1024 else json.dumps(os.environ["COMMIT_URL"])))'`
-          curl -v "https://api.telegram.org/bot${BOT_TOKEN}/sendMediaGroup?chat_id=${CHANNEL_ID}&media=%5B%7B%22type%22:%22document%22,%20%22media%22:%22attach://release%22%7D,%7B%22type%22:%22document%22,%20%22media%22:%22attach://debug%22,%22caption%22:${ESCAPED}%7D%5D"  -F release="@$release" -F debug="@$debug"
