@@ -9,7 +9,7 @@ import android.os.ServiceManager
 import de.robv.android.xposed.XposedHelpers
 import icu.nullptr.hidemyapplist.common.Constants
 import icu.nullptr.hidemyapplist.common.Utils
-import org.frknkrc44.hma_oss.common.BuildConfig
+import com.miui.video.common.BuildConfig
 import rikka.hidden.compat.ActivityManagerApis
 import rikka.hidden.compat.adapter.UidObserverAdapter
 
