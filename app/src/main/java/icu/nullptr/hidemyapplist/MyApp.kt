@@ -13,7 +13,7 @@ import icu.nullptr.hidemyapplist.util.ConfigUtils.Companion.getLocale
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import me.zhanghai.android.appiconloader.AppIconLoader
-import org.frknkrc44.hma_oss.R
+import com.miui.video.R
 import kotlin.system.exitProcess
 
 lateinit var hmaApp: MyApp
