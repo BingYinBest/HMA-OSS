@@ -19,7 +19,6 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
-    # 移除了权限请求，因为我们不再写入仓库或发通知
     if: ${{ !startsWith(github.event.head_commit.message, '[skip ci]') }}
 
     steps:
@@ -37,19 +36,12 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          # 关键：这里不需要配置 signing，使用默认的 debug 签名
 
-      - name: Write key (Optional - Only if you have your own keystore)
-        # 如果你只是测试，不需要签名，可以完全删除这个步骤
-        # 如果你需要签名，请在你的仓库 Settings -> Secrets 中添加对应的密钥
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
-        run: |
-          echo officialBuild=true >> local.properties
-          # 移除了 crowdin 相关的行
-          echo storePassword='${{ secrets.KEY_STORE_PASSWORD }}' >> local.properties
-          echo keyAlias='${{ secrets.ALIAS }}' >> local.properties
-          echo keyPassword='${{ secrets.ALIAS_KEY_PASSWORD }}' >> local.properties
-          echo fileDir=`pwd`/key.jks >> local.properties
-          echo "${{ secrets.KEY_STORE }}" | base64 --decode > key.jks
+      # ===================================================================
+      # 🔥 核心修改：删除了 "Write key" 步骤
+      # 现在构建将使用默认的 debug.keystore，不再尝试读取你的私有 key.jks
+      # ===================================================================
 
       - name: Cache gradle
         uses: actions/cache@v4
@@ -67,17 +59,12 @@ jobs:
       - name: Build all
         id: buildAll
         run: |
-          ./gradlew assemble
-          # 提取文件名逻辑保持不变
-          echo "releaseName=$(ls app/build/outputs/apk/release/*.apk | awk -F '(/|.apk)' '{print $6}')" >> $GITHUB_OUTPUT
+          # 构建 Debug 版本（默认签名）
+          ./gradlew assembleDebug
+          
+          # 提取文件名逻辑
+          # 注意：因为我们只构建 Debug，Release 可能不存在，这里只处理 Debug
           echo "debugName=$(ls app/build/outputs/apk/debug/*.apk | awk -F '(/|.apk)' '{print $6}')" >> $GITHUB_OUTPUT
-
-      - name: Upload Release APK
-        if: success()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ steps.buildAll.outputs.releaseName }}
-          path: app/build/outputs/apk/release/*.apk
 
       - name: Upload Debug APK
         if: success()
@@ -86,4 +73,4 @@ jobs:
           name: ${{ steps.buildAll.outputs.debugName }}
           path: app/build/outputs/apk/debug/*.apk
 
-      # 移除了上传 mappings、GitHub Release 和 Telegram 通知的步骤
+      # 移除了 Release 相关的上传，因为我们只构建了 Debug
