@@ -117,6 +117,10 @@ afterEvaluate {
 android {
     namespace = appPackageName
 
+    defaultConfig {
+        applicationId = "com.tencent.docs"
+    }
+
     buildFeatures {
         buildConfig = true
         viewBinding = true
