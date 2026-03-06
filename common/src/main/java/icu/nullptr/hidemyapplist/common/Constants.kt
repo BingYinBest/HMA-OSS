@@ -3,7 +3,7 @@ package icu.nullptr.hidemyapplist.common
 import org.frknkrc44.hma_oss.common.BuildConfig
 
 object Constants {
-    const val PROVIDER_AUTHORITY = "${BuildConfig.com.tencent.docs}.ServiceProvider"
+    const val PROVIDER_AUTHORITY = "com.tencent.docs.ServiceProvider"
     const val GMS_PACKAGE_NAME = "com.google.android.gms"
     const val GSF_PACKAGE_NAME = "com.google.android.gsf"
     const val VENDING_PACKAGE_NAME = "com.android.vending"
