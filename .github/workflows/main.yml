@@ -36,12 +36,14 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
-          # 关键：这里不需要配置 signing，使用默认的 debug 签名
 
-      # ===================================================================
-      # 🔥 核心修改：删除了 "Write key" 步骤
-      # 现在构建将使用默认的 debug.keystore，不再尝试读取你的私有 key.jks
-      # ===================================================================
+      # =============== 新增步骤 ===============
+      # 这个步骤会自动创建 local.properties 并写入 SDK 路径
+      - name: Create local.properties
+        run: |
+          echo "sdk.dir=${ANDROID_HOME}" >> local.properties
+          echo "officialBuild=true" >> local.properties
+      # ======================================
 
       - name: Cache gradle
         uses: actions/cache@v4
@@ -59,12 +61,16 @@ jobs:
       - name: Build all
         id: buildAll
         run: |
-          # 构建 Debug 版本（默认签名）
-          ./gradlew assembleDebug
-          
-          # 提取文件名逻辑
-          # 注意：因为我们只构建 Debug，Release 可能不存在，这里只处理 Debug
+          ./gradlew assemble
+          echo "releaseName=$(ls app/build/outputs/apk/release/*.apk | awk -F '(/|.apk)' '{print $6}')" >> $GITHUB_OUTPUT
           echo "debugName=$(ls app/build/outputs/apk/debug/*.apk | awk -F '(/|.apk)' '{print $6}')" >> $GITHUB_OUTPUT
+
+      - name: Upload Release APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.buildAll.outputs.releaseName }}
+          path: app/build/outputs/apk/release/*.apk
 
       - name: Upload Debug APK
         if: success()
@@ -72,5 +78,3 @@ jobs:
         with:
           name: ${{ steps.buildAll.outputs.debugName }}
           path: app/build/outputs/apk/debug/*.apk
-
-      # 移除了 Release 相关的上传，因为我们只构建了 Debug
