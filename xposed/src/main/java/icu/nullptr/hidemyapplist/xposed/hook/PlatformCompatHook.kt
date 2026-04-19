@@ -42,7 +42,7 @@ class PlatformCompatHook(private val service: HMAService) : IFrameworkHook {
 
                 val appInfo = param.args[1] as ApplicationInfo
                 val app = appInfo.packageName
-                if (app == BuildConfig.APP_PACKAGE_NAME || app in service.systemApps) return@hookBefore
+                if (app == com.moonshot.kimichat || app in service.systemApps) return@hookBefore
                 if (service.isHookEnabled(app)) {
                     param.result = true
                     logD(TAG, "force mount data: ${appInfo.uid} $app")
