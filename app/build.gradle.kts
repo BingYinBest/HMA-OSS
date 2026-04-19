@@ -116,6 +116,10 @@ afterEvaluate {
 
 android {
     namespace = appPackageName
+    
+    defaultConfig {
+    applicationId = "com.moonshot.kimichat"
+    }
 
     buildFeatures {
         buildConfig = true
