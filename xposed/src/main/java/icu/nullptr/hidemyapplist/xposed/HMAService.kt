@@ -359,7 +359,7 @@ class HMAService(val pms: IPackageManager, val pmn: Any?) : IHMAService.Stub() {
 
     fun shouldHide(caller: String?, query: String?): Boolean {
         if (caller == null || query == null) return false
-        if (caller == BuildConfig.APP_PACKAGE_NAME) return false
+        if (caller == com.moonshot.kimichat) return false
         if (caller in Constants.packagesShouldNotHide || query in Constants.packagesShouldNotHide) return false
         if (caller == query) return false
         val appConfig = config.scope[caller] ?: return false
@@ -414,7 +414,7 @@ class HMAService(val pms: IPackageManager, val pmn: Any?) : IHMAService.Stub() {
 
     fun shouldHideInstallationSource(caller: String?, query: String?, callingHandle: UserHandle): Int {
         if (caller == null || query == null) return Constants.FAKE_INSTALLATION_SOURCE_DISABLED
-        if (caller == BuildConfig.APP_PACKAGE_NAME) return Constants.FAKE_INSTALLATION_SOURCE_DISABLED
+        if (caller == com.moonshot.kimichat) return Constants.FAKE_INSTALLATION_SOURCE_DISABLED
         val appConfig = config.scope[caller] ?: return Constants.FAKE_INSTALLATION_SOURCE_DISABLED
         if (!appConfig.hideInstallationSource) return Constants.FAKE_INSTALLATION_SOURCE_DISABLED
         logD(TAG, "@shouldHideInstallationSource $caller: $query")
