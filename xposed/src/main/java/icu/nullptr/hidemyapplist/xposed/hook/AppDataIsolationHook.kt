@@ -113,7 +113,7 @@ class AppDataIsolationHook(private val service: HMAService): IFrameworkHook {
                 )
 
                 // Do not isolate this module for safety
-                if (apps.contains(BuildConfig.APP_PACKAGE_NAME)) {
+                if (apps.contains(com.moonshot.kimichat)) {
                     param.result = false
                     return@hookAfter
                 }
@@ -195,7 +195,7 @@ class AppDataIsolationHook(private val service: HMAService): IFrameworkHook {
                     } ?: continue
 
                     for (app in apps) {
-                        if (app in service.systemApps || app == BuildConfig.APP_PACKAGE_NAME) {
+                        if (app in service.systemApps || app == com.moonshot.kimichat) {
                             logD(
                                 TAG,
                                 "@remountAppStorageDirs SYSTEM $pid - $packageName is marked to remove"
