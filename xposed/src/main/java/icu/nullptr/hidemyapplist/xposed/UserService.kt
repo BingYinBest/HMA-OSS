@@ -58,7 +58,7 @@ object UserService {
         val service = HMAService(pms, pmn)
 
         try {
-            appUid = Utils.getPackageUidCompat(service.pms, BuildConfig.APP_PACKAGE_NAME, 0, 0)
+            appUid = Utils.getPackageUidCompat(service.pms, com.moonshot.kimichat, 0, 0)
             assert(appUid >= 0) {
                 "App UID cannot be -1 or lower"
             }
